@@ -1,34 +1,64 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa"; // Icons
+import rivan_logo from "../assets/rivan_logo.png";
 
 const Header = () => {
   return (
-    <header className="w-full bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <div className="text-lg font-bold tracking-wide">RIVANSHI</div>
+    <header className="flex justify-around items-center px-8 py-4 shadow-md">
+      {/* Logo Section */}
+      <Link to="/">
+        <div className="flex items-center space-x-2">
+          <img src={rivan_logo} alt="Logo" className="w-15 h-15" />
+          <span className="font-bold text-xl">RIVANSHOP</span>
+        </div>
+      </Link>
 
+      {/* Buttons */}
+      <div className="flex items-center space-x-3">
         {/* Navigation */}
-        <nav className="hidden flex items-center md:flex space-x-8 text-sm text-gray-700">
-          <Link to="/" className="hover:text-gray-900">
+        <nav className="flex items-center space-x-6 text-sm">
+          <Link to="/" className="hover:text-primary-hover">
             Home
           </Link>
-          <Link to="/products" className="hover:text-gray-900">
+          <Link to="/products" className="hover:text-primary-hover">
             Products
           </Link>
-          <Link to="/team" className="hover:text-gray-900">
+          <Link to="#" className="hover:text-primary-hover">
             Team
           </Link>
-
-          <div className="flex space-x-3">
-            <button className="px-4 py-1 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-100 transition">
-              Register
-            </button>
-            <button className="px-4 py-1 bg-blue-900 text-white rounded-md text-sm hover:bg-blue-800 transition">
-              Sign In
-            </button>
-          </div>
         </nav>
+
+        {/* Icons */}
+        <>
+          <Link
+            to="/cart"
+            className="text-xl text-primary hover:text-primary-hover"
+          >
+            <FaShoppingCart />
+          </Link>
+          <Link
+            to="/profile"
+            className="text-xl text-primary hover:text-primary-hover"
+          >
+            <FaUserCircle />
+          </Link>
+        </>
+        <>
+          {/* Auth Buttons */}
+          <Link
+            to="/register"
+            className="border border-primary text-primary px-4 py-1 rounded-full hover:bg-blue-50 text-sm"
+          >
+            Register
+          </Link>
+          <Link
+            to="/login"
+            className="bg-primary text-white px-4 py-1 rounded-full hover:bg-primary-hover text-sm"
+          >
+            Sign In
+          </Link>
+        </>
       </div>
     </header>
   );
